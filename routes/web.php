@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DemoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/tag', function() {
+    return 'this is tag page';
+});
+
+Route::get('/category', function() {
+    return 'this is category page';
+});
+
+Route::get('/blog', function() {
+    return 'this is blog page';
 });
