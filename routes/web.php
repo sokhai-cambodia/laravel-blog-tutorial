@@ -15,7 +15,11 @@ use App\Http\Controllers\DemoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/article', function () {
+    return view('article');
 });
 
 // Route::get('/tag', function() {
