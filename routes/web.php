@@ -16,11 +16,11 @@ use App\Http\Controllers\DemoController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 Route::get('/article', function () {
     return view('article');
-});
+})->name('article');
 
 // Route::get('/tag', function() {
 //     return 'this is tag page';

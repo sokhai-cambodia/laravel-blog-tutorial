@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="/index.html">Blog Name</a>
+      <a class="navbar-brand" href="{{ route('home') }}">Blog Name</a>
       <button
         class="navbar-toggler"
         type="button"

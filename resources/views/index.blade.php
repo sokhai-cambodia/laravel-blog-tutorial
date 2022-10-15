@@ -12,7 +12,7 @@
         <div class="col-lg-12">
           <!-- Featured blog post-->
           <div class="card mb-4">
-            <a href="./blog.html"
+            <a href="{{ route('article') }}"
               ><img
                 class="card-img-top"
                 src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
@@ -27,14 +27,14 @@
                 laboriosam. Dicta expedita corporis animi vero voluptate
                 voluptatibus possimus, veniam magni quis!
               </p>
-              <a class="btn btn-primary" href="./blog.html">Read more →</a>
+              <a class="btn btn-primary" href="{{ route('article') }}">Read more →</a>
             </div>
           </div>
         </div>
         <div class="col-lg-6">
           <!-- Blog post-->
           <div class="card mb-4">
-            <a href="./blog.html"
+            <a href="{{ route('article') }}"
               ><img
                 class="card-img-top"
                 src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
@@ -47,14 +47,14 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Reiciendis aliquid atque, nulla.
               </p>
-              <a class="btn btn-primary" href="./blog.html">Read more →</a>
+              <a class="btn btn-primary" href="{{ route('article') }}">Read more →</a>
             </div>
           </div>
         </div>
         <div class="col-lg-6">
           <!-- Blog post-->
           <div class="card mb-4">
-            <a href="./blog.html"
+            <a href="{{ route('article') }}"
               ><img
                 class="card-img-top"
                 src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
@@ -67,7 +67,7 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Reiciendis aliquid atque, nulla.
               </p>
-              <a class="btn btn-primary" href="./blog.html">Read more →</a>
+              <a class="btn btn-primary" href="{{ route('article') }}">Read more →</a>
             </div>
           </div>
         </div>
