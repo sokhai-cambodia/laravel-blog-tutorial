@@ -41,7 +41,7 @@
                 >
               </li>
               <li>
-                <a class="dropdown-item" href="./admin/tag/index.html">Tag</a>
+                <a class="dropdown-item" href="{{ route('admin.tag.index') }}">Tag</a>
               </li>
               <li><hr class="dropdown-divider" /></li>
               <li>
