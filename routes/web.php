@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DemoController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,7 @@ Route::get('/article', function () {
 Route::get('/tag', [DemoController::class, 'tag']);
 Route::get('/category', [DemoController::class, 'category']);
 Route::get('/blog', [DemoController::class, 'blog']);
+
+Route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category.index');
+Route::get('/admin/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
+Route::get('/admin/category/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
