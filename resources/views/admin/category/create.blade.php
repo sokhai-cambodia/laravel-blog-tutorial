@@ -11,10 +11,11 @@
 <!-- Blog entries-->
 <div class="col-lg-12">
     <div class="card p-3">
-    <form method="POST">
+    <form method="POST" action="{{ route('admin.category.store') }}">
+        @csrf
         <div class="mb-3">
-        <label for="tag" class="form-label">Category</label>
-        <input type="text" class="form-control" id="tag" name="tag" />
+            <label for="name" class="form-label">Category</label>
+            <input type="text" class="form-control" id="name" name="name" />
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

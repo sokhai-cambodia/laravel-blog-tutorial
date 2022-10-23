@@ -26,18 +26,31 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Page</td>
-              <td>
-                <a
-                  class="btn btn-primary btn-sm"
-                  href="{{ route('admin.category.edit', ['id' => 1]) }}"
-                  role="button"
-                  >Edit</a
-                >
-              </td>
-            </tr>
+            @foreach($categories as $category)
+              <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $category->name }}</td>
+                <td>
+                  <a
+                    class="btn btn-primary btn-sm"
+                    href="{{ route('admin.category.edit', ['id' => $category->id]) }}"
+                    role="button"
+                    >Edit</a
+                  >
+                  <form method="POST" action="{{ route('admin.category.destroy', ['id' =>  $category->id]) }}">
+                    @method('DELETE')
+                    @csrf
+                    <button
+                      class="btn btn-danger btn-sm"
+                      role="button"
+                      type="submit"
+                      >Delete</button
+                    >
+                  </form>
+                  
+                </td>
+              </tr>
+            @endforeach
           </tbody>
           <tfoot>
             <tr>
