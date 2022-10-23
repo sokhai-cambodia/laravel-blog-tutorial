@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DemoController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\TagController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,16 +40,21 @@ Route::get('/tag', [DemoController::class, 'tag']);
 Route::get('/category', [DemoController::class, 'category']);
 Route::get('/blog', [DemoController::class, 'blog']);
 
-Route::get('/admin/category', [CategoryController::class, 'index'])->name('admin.category.index');
-Route::get('/admin/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
-Route::post('/admin/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
-Route::get('/admin/category/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
-Route::put('/admin/category/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
-Route::delete('/admin/category/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
 
-Route::get('/admin/tag', [TagController::class, 'index'])->name('admin.tag.index');
-Route::get('/admin/tag/create', [TagController::class, 'create'])->name('admin.tag.create');
-Route::post('/admin/tag/store', [TagController::class, 'store'])->name('admin.tag.store');
-Route::get('/admin/tag/{id}', [TagController::class, 'edit'])->name('admin.tag.edit');
-Route::put('/admin/tag/{id}', [TagController::class, 'update'])->name('admin.tag.update');
-Route::delete('/admin/tag/{id}', [TagController::class, 'destroy'])->name('admin.tag.destroy');
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Route::resource('category', CategoryController::class);
+    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+    Route::get('/tag', [TagController::class, 'index'])->name('tag.index');
+    Route::get('/tag/create', [TagController::class, 'create'])->name('tag.create');
+    Route::post('/tag/store', [TagController::class, 'store'])->name('tag.store');
+    Route::get('/tag/{id}', [TagController::class, 'edit'])->name('tag.edit');
+    Route::put('/tag/{id}', [TagController::class, 'update'])->name('tag.update');
+    Route::delete('/tag/{id}', [TagController::class, 'destroy'])->name('tag.destroy');
+});
+
