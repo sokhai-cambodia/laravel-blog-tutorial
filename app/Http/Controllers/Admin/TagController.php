@@ -18,6 +18,10 @@ class TagController extends Controller
     }
 
     public function store(Request $request) {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
         // dd($request->all());
         // write logic for save to database
         // insert into 
@@ -36,6 +40,10 @@ class TagController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        
         $tag = Tag::findOrFail($id);
         $tag->name = $request->name;
         $tag->save();

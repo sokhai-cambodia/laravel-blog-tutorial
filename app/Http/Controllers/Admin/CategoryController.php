@@ -18,14 +18,22 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request) {
-        // dd($request->all());
-        // write logic for save to database
+        // step 1: validate data is valid
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        // dd($validated, $request->all());
+     
+        // step 2: write logic for save to database
         // insert into 
+        // Model::create($validated);
         $category = new Category();
         $category->name = $request->name;
         // $category->field1 = $request->name;
         $category->save();
 
+        // step 3: redirect or response end user
         // redirect to route
         return redirect()->route('admin.category.index');
     }
@@ -36,6 +44,10 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        
         $category = Category::findOrFail($id);
         $category->name = $request->name;
         $category->save();
