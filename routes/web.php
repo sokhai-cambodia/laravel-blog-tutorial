@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,5 +57,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/tag/{id}', [TagController::class, 'edit'])->name('tag.edit');
     Route::put('/tag/{id}', [TagController::class, 'update'])->name('tag.update');
     Route::delete('/tag/{id}', [TagController::class, 'destroy'])->name('tag.destroy');
+
+    Route::get('/post', [PostController::class, 'index'])->name('post.index');
+    Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
+    Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
+    Route::get('/post/{id}', [PostController::class, 'edit'])->name('post.edit');
+    Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');
+    Route::delete('/post/{id}', [PostController::class, 'destroy'])->name('post.destroy');
 });
 
