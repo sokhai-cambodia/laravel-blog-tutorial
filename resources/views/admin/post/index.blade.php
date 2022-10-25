@@ -24,57 +24,38 @@
               <th>No</th>
               <th>Thumbnail</th>
               <th>Title</th>
-              <th>Tag</th>
+              <th>Category</th>
               <th>Tag</th>
               <th style="width: 100px">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Thumbnail</td>
-              <td>Title</td>
-              <td>Tag</td>
-              <td>Tag</td>
-              <td>
-                <a
-                  class="btn btn-primary btn-sm"
-                  href="create_edit.html"
-                  role="button"
-                  >Edit</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Thumbnail</td>
-              <td>Title</td>
-              <td>Tag</td>
-              <td>Tag</td>
-              <td>
-                <a
-                  class="btn btn-primary btn-sm"
-                  href="create_edit.html"
-                  role="button"
-                  >Edit</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Thumbnail</td>
-              <td>Title</td>
-              <td>Tag</td>
-              <td>Tag</td>
-              <td>
-                <a
-                  class="btn btn-primary btn-sm"
-                  href="create_edit.html"
-                  role="button"
-                  >Edit</a
-                >
-              </td>
-            </tr>
+            @foreach ($posts as $post)
+              <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>
+                  <img src="{{ $post->image }}" style="width: 50px;">
+                </td>
+                <td>{{ $post->title }}</td>
+                <td>{{ $post->category->name }}</td>
+                <td>
+                  <ul>
+                    @foreach ($post->tags as $tag)
+                      <li>{{ $tag->id }} - {{ $tag->name }}</li>
+                    @endforeach
+                  </ul>
+                </td>
+                <td>
+                  <a
+                    class="btn btn-primary btn-sm"
+                    href="create_edit.html"
+                    role="button"
+                    >Edit</a
+                  >
+                </td>
+              </tr>
+            @endforeach
+           
           </tbody>
           <tfoot>
             <tr>
