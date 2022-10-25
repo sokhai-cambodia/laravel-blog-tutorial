@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
-@section('title', 'Post Create')
+@section('title', 'Post Update')
 
 @section('content')
 <div class="row">
 <div class="d-flex justify-content-between mb-2">
-    <h3>Edit Post</h3>
+    <h3>Update Post</h3>
     <a class="btn btn-success" href="{{ route('admin.post.index') }}" role="button">Back</a>
 </div>
 <!-- Blog entries-->
 <div class="col-lg-12">
     <div class="card p-3">
-    <form method="POST" action="{{ route('admin.post.update', ['id' => $post->id]) }}">
-        @method('PUT')
+    <form method="POST" action="{{ route('admin.post.update', ['id' => $post->id]) }}" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input
@@ -21,6 +21,7 @@
               class="form-control"
               id="title"
               name="title"
+              value="{{ $post->title }}"
             />
           </div>
           <div class="mb-3">
@@ -30,7 +31,7 @@
               id="content"
               name="content"
               rows="5"
-            ></textarea>
+            >{{ $post->content }}</textarea>
           </div>
           <div class="mb-3">
             <label for="thumbnail" class="form-label"
@@ -47,63 +48,47 @@
             <label for="category" class="form-label">Category</label>
             <select
               class="form-select"
-              name="category"
+              name="category_id"
               aria-label="Default select example"
             >
               <option selected>Select Category</option>
-              <option value="1">Category 1</option>
-              <option value="2">Category 2</option>
-              <option value="3">Category 3</option>
+              @foreach($categories as $category)
+                <option value="{{ $category->id }}" {{ $category->id == $post->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
+              @endforeach
             </select>
           </div>
           <div class="mb-3">
             <label for="tags" class="form-label">Tag</label>
             <div class="tag-wrapper">
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="tags[]"
-                  value="tag1"
-                  id="tag1"
-                />
-                <label class="form-check-label" for="tag1">Tag 1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="tags[]"
-                  value="tag2"
-                  id="tag2"
-                />
-                <label class="form-check-label" for="tag2">Tag 2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="tags[]"
-                  value="tag3"
-                  id="tag3"
-                />
-                <label class="form-check-label" for="tag3">Tag 3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="tags[]"
-                  value="tag4"
-                  id="tag4"
-                />
-                <label class="form-check-label" for="tag4">Tag 4</label>
-              </div>
+              @foreach ($tags as $tag)
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="tags[]"
+                    value="{{ $tag->id }}"
+                    id="tag{{ $tag->id }}"
+                    {{ in_array($tag->id, $post->tags()->pluck('id')->toArray()) ? 'checked' : '' }}
+                  />
+                  <label class="form-check-label" for="tag{{ $tag->id }}">{{ $tag->name }}</label>
+                </div>
+              @endforeach
+              
             </div>
           </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     </div>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </div>
 </div>
 @endsection

@@ -48,7 +48,7 @@
                 <td>
                   <a
                     class="btn btn-primary btn-sm"
-                    href="create_edit.html"
+                    href="{{ route('admin.post.edit', ['id' => $post->id]) }}"
                     role="button"
                     >Edit</a
                   >
