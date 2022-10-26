@@ -47,6 +47,7 @@ class PostController extends Controller
             );
 
             $post = new Post();
+            $post->user_id = auth()->id();
             $post->title = $request->title;
             $post->content = $request->content;
             $post->thumbnail = $filePath;
@@ -88,6 +89,7 @@ class PostController extends Controller
             ]);
     
             $post = Post::findOrFail($id);
+            $post->user_id = auth()->id();
             $post->title = $request->title;
             $post->content = $request->content;
             $post->category_id = $request->category_id;

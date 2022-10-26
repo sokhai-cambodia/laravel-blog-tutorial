@@ -22,6 +22,7 @@
           <thead>
             <tr>
               <th>No</th>
+              <th>Author</th>
               <th>Thumbnail</th>
               <th>Title</th>
               <th>Category</th>
@@ -33,6 +34,8 @@
             @foreach ($posts as $post)
               <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>{{ $post->user?->name }}</td>
+                {{-- <td>{{ optional($post->user)->email }}</td> --}}
                 <td>
                   <img src="{{ $post->image }}" style="width: 50px;">
                 </td>
