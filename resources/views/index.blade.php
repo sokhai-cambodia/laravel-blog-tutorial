@@ -2,6 +2,23 @@
 
 @section('title', 'Homepage Title')
 
+@push('page-styles')
+<style>
+  .post-item-image {
+    height: 250px;
+  }
+
+  .post-item-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+  }
+
+</style>
+@endpush
 
 @section('content')
 <div class="row">
@@ -38,14 +55,14 @@
             <div class="card mb-4">
               <a href="{{ route('article') }}"
                 ><img
-                  class="card-img-top"
+                  class="card-img-top post-item-image"
                   src="{{ $post->image }}"
                   alt="..."
               /></a>
               <div class="card-body">
-                <div class="small text-muted">January 1, 2022</div>
+                <div class="small text-muted">{{ $post->created_at->format('F d, Y') }}</div>
                 <h2 class="card-title h4">{{ $post->title }}</h2>
-                <p class="card-text">
+                <p class="card-text post-item-content">
                   {{ $post->content }}
                 </p>
                 <a class="btn btn-primary" href="{{ route('article') }}">Read more →</a>

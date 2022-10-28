@@ -2,6 +2,14 @@
 
 @section('title', 'Blog Page Title')
 
+@push('page-styles')
+<style>
+.post-title {
+  color: red;
+}
+</style>
+@endpush
+
 @section('content')
 <div class="row">
   <div class="col-lg-8">
@@ -10,7 +18,7 @@
       <!-- Post header-->
       <header class="mb-4">
         <!-- Post title-->
-        <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
+        <h1 class="fw-bolder mb-1 post-title">Welcome to Blog Post!</h1>
         <!-- Post meta content-->
         <div class="text-muted fst-italic mb-2">
           Posted on January 1, 2022 by Start Bootstrap
