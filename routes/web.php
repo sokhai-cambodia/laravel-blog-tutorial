@@ -1,8 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DemoController;
 use App\Http\Controllers\AuthController;
+
+// Pubic Controller
+use App\Http\Controllers\DemoController;
+use App\Http\Controllers\HomeController;
+
+// Admin Controller
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\PostController;
@@ -18,9 +23,7 @@ use App\Http\Controllers\Admin\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/article', function () {
     return view('article');
