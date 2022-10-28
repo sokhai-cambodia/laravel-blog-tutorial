@@ -12,4 +12,9 @@ class HomeController extends Controller
         $posts = Post::paginate(8);
         return view('index', ['posts' => $posts]);
     }
+
+    public function article(Request $request, $id) {
+        $post = Post::findOrFail($id);
+        return view('article', ['post' => $post]);
+    }
 }

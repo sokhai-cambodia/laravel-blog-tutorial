@@ -24,10 +24,7 @@ use App\Http\Controllers\Admin\PostController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::get('/article', function () {
-    return view('article');
-})->name('article');
+Route::get('/article/{id}', [HomeController::class, 'article'])->name('article');
 
 // Route::get('/tag', function() {
 //     return 'this is tag page';

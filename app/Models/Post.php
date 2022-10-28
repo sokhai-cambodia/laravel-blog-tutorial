@@ -33,4 +33,8 @@ class Post extends Model
             get: fn ($value) => asset('storage/'.$this->thumbnail),
         );
     }
+
+    public function displayDate() {
+        return $this->created_at->format('F d, Y');
+    }
 }

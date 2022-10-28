@@ -53,19 +53,19 @@
           <div class="col-lg-6">
             <!-- Blog post-->
             <div class="card mb-4">
-              <a href="{{ route('article') }}"
+              <a href="{{ route('article', ['id' => $post->id]) }}"
                 ><img
                   class="card-img-top post-item-image"
                   src="{{ $post->image }}"
                   alt="..."
               /></a>
               <div class="card-body">
-                <div class="small text-muted">{{ $post->created_at->format('F d, Y') }}</div>
+                <div class="small text-muted">{{ $post->displayDate() }}</div>
                 <h2 class="card-title h4">{{ $post->title }}</h2>
                 <p class="card-text post-item-content">
                   {{ $post->content }}
                 </p>
-                <a class="btn btn-primary" href="{{ route('article') }}">Read more →</a>
+                <a class="btn btn-primary" href="{{ route('article', ['id' => $post->id]) }}">Read more →</a>
               </div>
             </div>
           </div>
